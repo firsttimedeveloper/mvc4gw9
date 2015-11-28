@@ -1,0 +1,54 @@
+﻿    <div class="article_images">
+
+        <div id="bigImage">
+            <img class="bigImage" src="/Content/nomenclature/pictures/@Model.Image" alt="@Model.Image"/>    
+        </div>
+  
+    
+        <div class="product_smallImages">
+
+        @{
+            foreach (var item in Model.Gallery)
+            {
+                <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#bigImage" href="/Home/product_changeImage?filename=@item"><img alt="@item" src="/Content/nomenclature/pictures_small/@item" /></a>            
+            }    
+        }    
+
+        </div>
+
+    </div>
+
+    <div class="article_description">
+
+        <div class="product_name">
+            <h2>@Model.Name</h2>
+        </div>
+
+        <div class="product_description">
+            <h4>@Model.Description</h4>
+        </div>
+
+        <div class="product_characteristics">
+        @{
+            
+            foreach (var parameter in @Model.Parameters)
+            {
+                <div class="product_characteristic">       
+                @foreach (var value in parameter.Values)
+                {
+                    if (value == parameter.SelectedValue)
+                    {
+                    <a class="selected_value" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#product" href="/Home/product_changeParameter?nomenclatureId=@Model.Id&amp;parameter=@parameter.Name&amp;value=@value&amp;currentParameters=@Model.currentParameters">@value</a>
+                    }
+                    else
+                    {
+                    <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#product" href="/Home/product_changeParameter?nomenclatureId=@Model.Id&amp;parameter=@parameter.Name&amp;value=@value&amp;currentParameters=@Model.currentParameters">@value</a>                    
+                    }
+                }    
+                </div>           
+            }
+         }
+
+       </div>
+
+    </div>

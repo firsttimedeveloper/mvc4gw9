@@ -1,0 +1,32 @@
+﻿@model IEnumerable<mvc4gw9.Models.Product>
+
+@{
+    ViewBag.Title = "Обувь детская";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<div class="products_list">
+
+   @{
+       foreach(var product in Model)
+       {
+
+        <div class="products_list_item">
+            <a href="/Home/ShowProduct?nomenclatureId=@product.Id&amp;featuresSetId=@product.currentParameters">
+                <img src="/Content/nomenclature/pictures/@product.Image" width="142px" height="122px" alt ="@product.Image"/>
+            </a>
+
+              <a href="/Home/ShowProduct?nomenclatureId=@product.Id&amp;featuresSetId=@product.currentParameters">
+               @product.Name
+           </a>
+           </div>
+
+       }
+       
+    }
+
+</div>

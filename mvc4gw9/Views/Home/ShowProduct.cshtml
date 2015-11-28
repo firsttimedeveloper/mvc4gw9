@@ -1,0 +1,13 @@
+﻿@using mvc4gw9.Models
+@model mvc4gw9.Models.Product
+
+@{
+    ViewBag.Title = "Домашняя страница";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<div id="product">
+    @Html.Partial("product_changeParameter", Model)
+</div>                        
+
