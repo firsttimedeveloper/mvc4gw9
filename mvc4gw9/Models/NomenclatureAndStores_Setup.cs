@@ -9,6 +9,7 @@ namespace mvc4gw9.Models
 {
     public class DBContext : DbContext
     {
+        public DbSet<Group> Groups { get; set; }
         public DbSet<Nomenclature> Nomenclature { get; set; }
         public DbSet<Characteristic> Characteristics { get; set; }
         public DbSet<FeaturesSet> FeaturesSets { get; set; }
@@ -22,6 +23,15 @@ namespace mvc4gw9.Models
     {
         protected override void Seed(DBContext context)
         {
+            List<Group> groups = new List<Group>() {
+                new Group {Id=1, Name="Детская", ParentGroupId = 0},
+                new Group {Id=2, Name="Мужская", ParentGroupId = 0},
+                new Group {Id=3, Name="Женская", ParentGroupId = 0},                
+                new Group {Id=4, Name="Обувь", ParentGroupId = 1}
+            };
+            groups.ForEach(x => context.Groups.Add(x));
+            context.SaveChanges();
+            
             List<Nomenclature> nomenclature = new List<Nomenclature>() {
                 new Nomenclature {Id=1, Name="Dockers", Description="Спортивные ботинки - отлично подходят для зимы. Из искусственной кожи с отделкой Dock-Tex. Теплая внутренняя отделка. Износостойкая подошва из синтетики"},
                 new Nomenclature {Id=2, Name="TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},

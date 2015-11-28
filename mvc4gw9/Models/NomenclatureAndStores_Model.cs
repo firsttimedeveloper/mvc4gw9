@@ -8,6 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mvc4gw9.Models
 {
+    [Table("Groups", Schema = "dbo")]
+    public class Group
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int ParentGroupId { get; set; }
+    }
+    
     [Table("Nomenclature", Schema="dbo")]
     public class Nomenclature
     {
