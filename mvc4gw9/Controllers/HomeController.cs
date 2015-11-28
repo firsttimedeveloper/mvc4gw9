@@ -10,6 +10,7 @@ namespace mvc4gw9.Controllers
 {
     public class HomeController : Controller
     {
+        //Start page
         public ActionResult Index()
         {
             return View(DAL.GetProducts());
