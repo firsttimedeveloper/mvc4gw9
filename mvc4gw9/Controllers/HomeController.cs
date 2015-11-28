@@ -16,6 +16,7 @@ namespace mvc4gw9.Controllers
             return View(DAL.GetProducts());
         }
 
+        //Product page show
         public ActionResult ShowProduct(int nomenclatureId, string featuresSetId)
         {
             Product product = new Product();
