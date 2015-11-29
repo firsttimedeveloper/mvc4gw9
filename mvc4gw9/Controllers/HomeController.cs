@@ -10,13 +10,29 @@ namespace mvc4gw9.Controllers
 {
     public class HomeController : Controller
     {
-        //Start page
         public ActionResult Index()
         {
-            return View(DAL.GetProducts());
+            return RedirectToAction("ShowGroup");
         }
 
-        //Product page show
+        public ActionResult ShowGroup(int GroupId = 0)
+        {
+            List<Group> groups = DAL.GetGroup(GroupId);
+            if (groups.Count == 0)
+            {
+                return RedirectToAction("ShowProducts", new { GroupId = GroupId });
+            }
+            else
+            {
+                return View(groups);
+            }
+        }
+
+        public ActionResult ShowProducts(int GroupId)
+        {
+            return View(DAL.GetProducts(GroupId));
+        }
+
         public ActionResult ShowProduct(int nomenclatureId, string featuresSetId)
         {
             Product product = new Product();

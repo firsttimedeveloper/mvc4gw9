@@ -23,6 +23,8 @@ namespace mvc4gw9.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        public int GroupId { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
     }

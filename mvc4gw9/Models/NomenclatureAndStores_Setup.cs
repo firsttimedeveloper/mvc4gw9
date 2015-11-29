@@ -33,9 +33,9 @@ namespace mvc4gw9.Models
             context.SaveChanges();
             
             List<Nomenclature> nomenclature = new List<Nomenclature>() {
-                new Nomenclature {Id=1, Name="Dockers", Description="Спортивные ботинки - отлично подходят для зимы. Из искусственной кожи с отделкой Dock-Tex. Теплая внутренняя отделка. Износостойкая подошва из синтетики"},
-                new Nomenclature {Id=2, Name="TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},
-                new Nomenclature {Id=2, Name="sOliver", Description="Модные полусапожки от бренда s.Oliver придутся по вкусу настоящим модницам. Оригинальная модель в стиле кэжуал обладает максимальным комфортом. Удобство обуви обеспечивает..."}
+                new Nomenclature {Id=1, GroupId=4, Name="Dockers", Description="Спортивные ботинки - отлично подходят для зимы. Из искусственной кожи с отделкой Dock-Tex. Теплая внутренняя отделка. Износостойкая подошва из синтетики"},
+                new Nomenclature {Id=2, GroupId=4, Name="TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},
+                new Nomenclature {Id=2, GroupId=4, Name="sOliver", Description="Модные полусапожки от бренда s.Oliver придутся по вкусу настоящим модницам. Оригинальная модель в стиле кэжуал обладает максимальным комфортом. Удобство обуви обеспечивает..."}
             };
             nomenclature.ForEach(x => context.Nomenclature.Add(x));
             context.SaveChanges();

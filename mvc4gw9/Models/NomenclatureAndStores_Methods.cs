@@ -9,6 +9,14 @@ namespace mvc4gw9.Models
 {
     public class DAL
     {
+        public static List<Group> GetGroup(int parentGroupId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                return db.Groups.Where(x => x.ParentGroupId == parentGroupId).ToList();
+            }
+        }
+        
         public static Product GetProduct(int NomenclatureId, int FeaturesSetId)
         {
             Product product = new Product();
@@ -187,7 +195,7 @@ namespace mvc4gw9.Models
         }
 
 
-        public static List<Product> GetProducts()
+        public static List<Product> GetProducts(int GroupId)
         {
             List<Product> products = new List<Product>();
             using (DBContext db = new DBContext())
@@ -209,7 +217,7 @@ namespace mvc4gw9.Models
                     product.Image = db.NomenclatureViews.FirstOrDefault(x => x.NomenclatureId == nomenclatureId).Image + "1.jpg";
                     product.currentParameters = db.NomenclatureInStores.FirstOrDefault(x => x.NomenclatureId == nomenclatureId && x.Amount > 0).FeaturesSet.ToString();
 
-                    products.Add(product);
+                    if (db.Nomenclature.Find(nomenclatureId).GroupId == GroupId) products.Add(product);
                 }
             }
 
