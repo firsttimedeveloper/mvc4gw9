@@ -24,18 +24,22 @@ namespace mvc4gw9.Models
         protected override void Seed(DBContext context)
         {
             List<Group> groups = new List<Group>() {
-                new Group {Id=1, Name="Детская", ParentGroupId = 0},
-                new Group {Id=2, Name="Мужская", ParentGroupId = 0},
-                new Group {Id=3, Name="Женская", ParentGroupId = 0},                
-                new Group {Id=4, Name="Обувь", ParentGroupId = 1}
+                new Group {Id=1, Name="Каталог", ParentGroupId = 1},
+                new Group {Id=2, Name="Детская", ParentGroupId = 1},
+                new Group {Id=3, Name="Мужская", ParentGroupId = 1},
+                new Group {Id=4, Name="Женская", ParentGroupId = 1},                
+                new Group {Id=5, Name="Обувь", ParentGroupId = 2},
+                new Group {Id=6, Name="Dockers", ParentGroupId = 5},
+                new Group {Id=7, Name="TomTailor", ParentGroupId = 5},
+                new Group {Id=8, Name="sOliver", ParentGroupId = 5},
             };
             groups.ForEach(x => context.Groups.Add(x));
             context.SaveChanges();
             
             List<Nomenclature> nomenclature = new List<Nomenclature>() {
-                new Nomenclature {Id=1, GroupId=4, Name="Dockers", Description="Спортивные ботинки - отлично подходят для зимы. Из искусственной кожи с отделкой Dock-Tex. Теплая внутренняя отделка. Износостойкая подошва из синтетики"},
-                new Nomenclature {Id=2, GroupId=4, Name="TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},
-                new Nomenclature {Id=2, GroupId=4, Name="sOliver", Description="Модные полусапожки от бренда s.Oliver придутся по вкусу настоящим модницам. Оригинальная модель в стиле кэжуал обладает максимальным комфортом. Удобство обуви обеспечивает..."}
+                new Nomenclature {Id=1, GroupId=6, Name="Dockers", Description="Спортивные ботинки - отлично подходят для зимы. Из искусственной кожи с отделкой Dock-Tex. Теплая внутренняя отделка. Износостойкая подошва из синтетики"},
+                new Nomenclature {Id=2, GroupId=7, Name="TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},
+                new Nomenclature {Id=2, GroupId=8, Name="sOliver", Description="Модные полусапожки от бренда s.Oliver придутся по вкусу настоящим модницам. Оригинальная модель в стиле кэжуал обладает максимальным комфортом. Удобство обуви обеспечивает..."}
             };
             nomenclature.ForEach(x => context.Nomenclature.Add(x));
             context.SaveChanges();

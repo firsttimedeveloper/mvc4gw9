@@ -13,7 +13,7 @@ namespace mvc4gw9.Models
         {
             using (DBContext db = new DBContext())
             {
-                return db.Groups.Where(x => x.ParentGroupId == parentGroupId).ToList();
+                return db.Groups.Where(x => x.ParentGroupId == parentGroupId && x.Id!=1).ToList();
             }
         }
         
@@ -223,6 +223,24 @@ namespace mvc4gw9.Models
 
             return products;
         }
+
+
+        public static List<Group> GetPath(int GroupId)
+        {        
+            using (DBContext db= new DBContext())
+            {
+                List<Group> groups = new List<Group>();
+                while(GroupId!=1)
+                {
+                    groups.Add(db.Groups.Find(GroupId));
+                    GroupId = db.Groups.Find(GroupId).ParentGroupId;
+                }
+                groups.Add(db.Groups.Find(1));
+                groups.Reverse();
+                return groups;                
+            }
+        }
+
 
     }
 }

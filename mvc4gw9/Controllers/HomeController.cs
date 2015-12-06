@@ -15,21 +15,24 @@ namespace mvc4gw9.Controllers
             return RedirectToAction("ShowGroup");
         }
 
-        public ActionResult ShowGroup(int GroupId = 0)
+        public ActionResult ShowGroup(int GroupId = 1)
         {
-            List<Group> groups = DAL.GetGroup(GroupId);
-            if (groups.Count == 0)
+            Navigation navigation = new Navigation();
+            navigation.Subgroups = DAL.GetGroup(GroupId);
+            navigation.Path = DAL.GetPath(GroupId);
+            if (navigation.Subgroups.Count == 0)
             {
                 return RedirectToAction("ShowProducts", new { GroupId = GroupId });
             }
             else
             {
-                return View(groups);
+                return View(navigation);
             }
         }
 
         public ActionResult ShowProducts(int GroupId)
         {
+            ViewBag.Path = DAL.GetPath(GroupId);
             return View(DAL.GetProducts(GroupId));
         }
 

@@ -522,11 +522,17 @@ width: 320px;
 float: left;
 }
 
-.products_list a
+.path
 {
-text-decoration:none;
+margin: 0.5em 0em 0.5em 1em;
 }
 
+.path a
+{
+font-size:1em;
+font-weight:bold;
+text-decoration:none;
+}
 
 .products_list a
 {
@@ -535,7 +541,7 @@ text-decoration:none;
 
 .products_list_item
 {
-margin: 1em;
+margin: 1em ;
 padding: 0;
 float:left;
 background-color:#736E6E;

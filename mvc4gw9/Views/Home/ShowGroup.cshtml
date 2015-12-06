@@ -1,0 +1,28 @@
+﻿@model mvc4gw9.Models.Navigation
+
+@{
+    ViewBag.Title = "Категории продукции";
+}
+
+<h2>@ViewBag.Title</h2>
+@{
+    foreach(var group in Model.Path)
+    {
+    @Html.ActionLink(@group.Name, "ShowGroup", new { GroupId=@group.Id})
+    <span>>></span>
+    }
+    
+    <br />
+        
+    <ul>
+    @foreach(var group in Model.Subgroups)
+    {
+        <li>
+        @Html.ActionLink(@group.Name, "ShowGroup", new { GroupId=@group.Id})
+        </li>
+    }
+    </ul>
+}
+
+
+

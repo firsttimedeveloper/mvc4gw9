@@ -26,4 +26,10 @@ namespace mvc4gw9.Models
         public List<string> Values { get; set; }
     }
 
+    public class Navigation
+    {
+        public List<Group> Path { get; set; }
+        public List<Group> Subgroups { get; set; }
+    }
+
 }
