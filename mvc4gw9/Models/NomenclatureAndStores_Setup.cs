@@ -32,6 +32,7 @@ namespace mvc4gw9.Models
                 new Group {Id=6, Name="Dockers", ParentGroupId = 5},
                 new Group {Id=7, Name="TomTailor", ParentGroupId = 5},
                 new Group {Id=8, Name="sOliver", ParentGroupId = 5},
+                new Group {Id=9, Name="Одежда", ParentGroupId = 2},
             };
             groups.ForEach(x => context.Groups.Add(x));
             context.SaveChanges();

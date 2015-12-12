@@ -4,25 +4,37 @@
     ViewBag.Title = "Категории продукции";
 }
 
-<h2>@ViewBag.Title</h2>
-@{
-    foreach(var group in Model.Path)
-    {
-    @Html.ActionLink(@group.Name, "ShowGroup", new { GroupId=@group.Id})
-    <span>>></span>
-    }
+<div class="title">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="path">
+    @foreach(var group in Model.Path)
+        {
+            @Html.ActionLink(@group.Name, "ShowGroup", new { GroupId=@group.Id})
+            <span>\</span>
+        }
+</div>    
     
-    <br />
+<br />
         
+<div class="navigation">
     <ul>
-    @foreach(var group in Model.Subgroups)
+    @foreach(var branch in Model.Branches)
     {
         <li>
-        @Html.ActionLink(@group.Name, "ShowGroup", new { GroupId=@group.Id})
+            @Html.ActionLink(@branch.Group.Name, "ShowGroup", new { GroupId=@branch.Group.Id})
+            <ul>
+                @foreach (var subgroup in branch.Subgroups)
+                {
+                    <li>@Html.ActionLink(@subgroup.Name, "ShowGroup", new { GroupId=@subgroup.Id})</li>                
+                }
+            </ul>
         </li>
     }
     </ul>
-}
+</div>
+
 
 
 

@@ -8,17 +8,39 @@
     <h1>@ViewBag.Title</h1>
 </div>
 
-<div class="products_list">
-    <div class="path">
-    @{
-        foreach(var group in ViewBag.Path)
-        {
-            <a href="/Home/ShowGroup?GroupId=@group.Id">@group.Name</a>
+<div class="path">
+@{
+    foreach(var group in ViewBag.Path)
+    {
+        <a href="/Home/ShowGroup?GroupId=@group.Id">@group.Name</a>
             <span>\</span>
-        }
     }
-    </div>
+}
+</div>
 
+<div class="navigation">
+@{
+    <ul>
+        @foreach(var branch in ViewBag.Branches)
+        {
+            <li>
+                <a href="/Home/ShowGroup?GroupId=@branch.Group.Id">@branch.Group.Name</a>
+                <ul>
+                @foreach(var subgroup in branch.Subgroups)            
+                {
+                    <li>
+                        <a href="/Home/ShowGroup?GroupId=@subgroup.Id">@subgroup.Name</a>
+                    </li>
+                }
+                </ul>
+            </li>
+        }
+    </ul>
+}
+</div>
+
+
+<div class="products_list">
 
    @{
        foreach(var product in Model)

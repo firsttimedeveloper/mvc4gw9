@@ -99,7 +99,6 @@ namespace mvc4gw9.Models
             return product;
         }
 
-
         public static string GetNewCurentParametersString(string parameter, string value, string parametersString)
         {
             string[] parameters = parametersString.Split((char)32);
@@ -120,7 +119,6 @@ namespace mvc4gw9.Models
             }
             return newCurrentParametersString;
         }
-
 
         public static int GetNewFeaturesSetId(int NomenclatureId, string parameter, string value, string parametersString)
         {
@@ -194,7 +192,6 @@ namespace mvc4gw9.Models
             return featuresOfNomenclatureId[0];
         }
 
-
         public static List<Product> GetProducts(int GroupId)
         {
             List<Product> products = new List<Product>();
@@ -224,7 +221,6 @@ namespace mvc4gw9.Models
             return products;
         }
 
-
         public static List<Group> GetPath(int GroupId)
         {        
             using (DBContext db= new DBContext())
@@ -241,6 +237,66 @@ namespace mvc4gw9.Models
             }
         }
 
+        public static List<Branch> GetBranches(int GroupId)
+        {
+            List<Branch> branches = new List<Branch>();
+            using (DBContext db = new DBContext())
+            {
+                if (db.Groups.Where(x => x.ParentGroupId == GroupId && x.Id!=1).Count()==0)
+                {
+                    Branch branch = new Branch();
+                    branch.Group = db.Groups.Find(db.Groups.Find(GroupId).ParentGroupId);
+                    branch.Subgroups = db.Groups.Where(x => x.ParentGroupId == branch.Group.Id).ToList();
+                    branches.Add(branch);
+                    return branches;
+                }
+                else
+                {
+                    int rootGroupId = db.Groups.Find(db.Groups.Find(GroupId).ParentGroupId).ParentGroupId;
+                    List<Group> groups = new List<Group>();
+                    groups = db.Groups.Where(x => x.ParentGroupId == GroupId && x.Id!=1).ToList();
+                    int subgroups_counter=0;
+                    foreach (Group group in groups)
+                    {
+                        Branch branch = new Branch();
+                        branch.Group = group;
+                        branch.Subgroups = db.Groups.Where(x => x.ParentGroupId == group.Id).ToList();
+                        branches.Add(branch);
+
+                        subgroups_counter += branch.Subgroups.Count;
+                    }
+                    if (subgroups_counter == 0)
+                    {
+                        branches.Clear();
+                        Branch branch = new Branch();
+                        branch.Group = db.Groups.Find(GroupId);
+                        branch.Subgroups = db.Groups.Where(x => x.ParentGroupId == GroupId).ToList();
+                        branches.Add(branch);
+                        return branches;
+                    }
+                    else
+                    {
+                        return branches;
+                    }
+                }
+            }
+        }
+
+        public static bool HasSubgroup(int GroupId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                if (db.Groups.Where(x => x.ParentGroupId == GroupId).ToList().Count == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+        }
 
     }
 }
