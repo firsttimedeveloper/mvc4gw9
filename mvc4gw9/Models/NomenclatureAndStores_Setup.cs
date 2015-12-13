@@ -39,8 +39,11 @@ namespace mvc4gw9.Models
             
             List<Nomenclature> nomenclature = new List<Nomenclature>() {
                 new Nomenclature {Id=1, GroupId=6, Name="Dockers", Description="Спортивные ботинки - отлично подходят для зимы. Из искусственной кожи с отделкой Dock-Tex. Теплая внутренняя отделка. Износостойкая подошва из синтетики"},
-                new Nomenclature {Id=2, GroupId=7, Name="TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},
-                new Nomenclature {Id=2, GroupId=8, Name="sOliver", Description="Модные полусапожки от бренда s.Oliver придутся по вкусу настоящим модницам. Оригинальная модель в стиле кэжуал обладает максимальным комфортом. Удобство обуви обеспечивает..."}
+                new Nomenclature {Id=2, GroupId=7, Name="Ботинки TomTailor", Description="В обуви для детей важно все: материал верха, внутренняя отделка, декоративное оформление. Оригинальная модель ботинок со шнуровкой от модного бренда Tom Tailor станет любимой..."},
+                new Nomenclature {Id=3, GroupId=8, Name="sOliver", Description="Модные полусапожки от бренда s.Oliver придутся по вкусу настоящим модницам. Оригинальная модель в стиле кэжуал обладает максимальным комфортом. Удобство обуви обеспечивает..."},
+                new Nomenclature {Id=4, GroupId=7, Name="Слипперы TomTailor", Description="Лицевой материал: брезент. Подкладка: текстиль. Стелька: текстиль. По бокам — эластичные вставки. Застежка: отсутствует"},
+                new Nomenclature {Id=5, GroupId=7, Name="Ботинки TomTailor", Description="Искусственная кожа. Подкладка: сохраняет тепло. Стелька: текстиль. Технология TEX, мягкий воротник и дополнительная молния. Тип застежки: шнуровка"},
+                new Nomenclature {Id=6, GroupId=6, Name="Ботинки на шнуровке Dockers", Description="Лицевой материал: брезент. Подкладка: текстиль. Стелька: текстиль. Тип застежки: шнуровка"},
             };
             nomenclature.ForEach(x => context.Nomenclature.Add(x));
             context.SaveChanges();
@@ -55,6 +58,10 @@ namespace mvc4gw9.Models
                 new FeaturesSet {Id=7, Name="red 40"},
                 new FeaturesSet {Id=8, Name="gray 40"},
                 new FeaturesSet {Id=9, Name="black 41"},
+                new FeaturesSet {Id=10, Name="brown 39"},
+                new FeaturesSet {Id=11, Name="gray 38"},
+                new FeaturesSet {Id=12, Name="gray 39"},
+                new FeaturesSet {Id=13, Name="gray 41"}
             };
             featuressets.ForEach(x => context.FeaturesSets.Add(x));
             context.SaveChanges();
@@ -87,6 +94,14 @@ namespace mvc4gw9.Models
                 new FeaturesOfNomenclature {Id=14, FeaturesSetId=8, CharacteristicId=2, Value="40"},
                 new FeaturesOfNomenclature {Id=15, FeaturesSetId=9, CharacteristicId=1, Value="black"},
                 new FeaturesOfNomenclature {Id=16, FeaturesSetId=9, CharacteristicId=2, Value="41"},
+                new FeaturesOfNomenclature {Id=17, FeaturesSetId=10, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=18, FeaturesSetId=10, CharacteristicId=2, Value="39"},
+                new FeaturesOfNomenclature {Id=19, FeaturesSetId=11, CharacteristicId=1, Value="gray"},
+                new FeaturesOfNomenclature {Id=20, FeaturesSetId=11, CharacteristicId=2, Value="38"},
+                new FeaturesOfNomenclature {Id=21, FeaturesSetId=12, CharacteristicId=1, Value="gray"},
+                new FeaturesOfNomenclature {Id=22, FeaturesSetId=12, CharacteristicId=2, Value="39"},
+                new FeaturesOfNomenclature {Id=23, FeaturesSetId=13, CharacteristicId=1, Value="gray"},
+                new FeaturesOfNomenclature {Id=24, FeaturesSetId=13, CharacteristicId=2, Value="41"},
 
 
 
@@ -98,15 +113,25 @@ namespace mvc4gw9.Models
             List<NomenclatureView> nomenclatureviews = new List<NomenclatureView>()
             {
                 new NomenclatureView {Id=1, NomenclatureId=1, FeaturesSetId=1, Image="boots1_brown"},
-                new NomenclatureView {Id=1, NomenclatureId=1, FeaturesSetId=2, Image="boots1_brown"},
-                new NomenclatureView {Id=1, NomenclatureId=1, FeaturesSetId=3, Image="boots1_yellow"},
-                new NomenclatureView {Id=1, NomenclatureId=1, FeaturesSetId=4, Image="boots1_yellow"},
-                new NomenclatureView {Id=1, NomenclatureId=2, FeaturesSetId=5, Image="boots2_white"},
-                new NomenclatureView {Id=1, NomenclatureId=2, FeaturesSetId=6, Image="boots2_black"},
-                new NomenclatureView {Id=1, NomenclatureId=3, FeaturesSetId=7, Image="boots3_red"},
-                new NomenclatureView {Id=1, NomenclatureId=3, FeaturesSetId=8, Image="boots3_gray"},
-                new NomenclatureView {Id=1, NomenclatureId=3, FeaturesSetId=6, Image="boots3_black"},
-                new NomenclatureView {Id=1, NomenclatureId=3, FeaturesSetId=9, Image="boots3_black"},
+                new NomenclatureView {Id=2, NomenclatureId=1, FeaturesSetId=2, Image="boots1_brown"},
+                new NomenclatureView {Id=3, NomenclatureId=1, FeaturesSetId=3, Image="boots1_yellow"},
+                new NomenclatureView {Id=4, NomenclatureId=1, FeaturesSetId=4, Image="boots1_yellow"},
+                new NomenclatureView {Id=5, NomenclatureId=2, FeaturesSetId=5, Image="boots2_white"},
+                new NomenclatureView {Id=6, NomenclatureId=2, FeaturesSetId=6, Image="boots2_black"},
+                new NomenclatureView {Id=7, NomenclatureId=3, FeaturesSetId=7, Image="boots3_red"},
+                new NomenclatureView {Id=8, NomenclatureId=3, FeaturesSetId=8, Image="boots3_gray"},
+                new NomenclatureView {Id=9, NomenclatureId=3, FeaturesSetId=6, Image="boots3_black"},
+                new NomenclatureView {Id=10, NomenclatureId=3, FeaturesSetId=9, Image="boots3_black"},
+                new NomenclatureView {Id=11, NomenclatureId=4, FeaturesSetId=6, Image="boots4_black"},
+                new NomenclatureView {Id=12, NomenclatureId=4, FeaturesSetId=9, Image="boots4_black"},
+                new NomenclatureView {Id=13, NomenclatureId=5, FeaturesSetId=1, Image="boots5_brown"},
+                new NomenclatureView {Id=14, NomenclatureId=5, FeaturesSetId=2, Image="boots5_brown"},
+                new NomenclatureView {Id=15, NomenclatureId=5, FeaturesSetId=10, Image="boots5_brown"},
+                new NomenclatureView {Id=16, NomenclatureId=6, FeaturesSetId=8, Image="boots6_gray"},
+                new NomenclatureView {Id=17, NomenclatureId=6, FeaturesSetId=11, Image="boots6_gray"},
+                new NomenclatureView {Id=18, NomenclatureId=6, FeaturesSetId=12, Image="boots6_gray"},
+                new NomenclatureView {Id=19, NomenclatureId=6, FeaturesSetId=13, Image="boots6_gray"},
+
             };
 
             nomenclatureviews.ForEach(x => context.NomenclatureViews.Add(x));
@@ -147,9 +172,22 @@ namespace mvc4gw9.Models
                 new NomenclatureInStore {Id=14, StoreId=1, NomenclatureId=3, FeaturesSet=8, Amount=6},
                 new NomenclatureInStore {Id=15, StoreId=1, NomenclatureId=3, FeaturesSet=6, Amount=4},
                 new NomenclatureInStore {Id=16, StoreId=2, NomenclatureId=3, FeaturesSet=6, Amount=3},
-                new NomenclatureInStore {Id=16, StoreId=3, NomenclatureId=3, FeaturesSet=9, Amount=5},
+                new NomenclatureInStore {Id=17, StoreId=3, NomenclatureId=3, FeaturesSet=9, Amount=5},
 
-            
+                new NomenclatureInStore {Id=18, StoreId=2, NomenclatureId=4, FeaturesSet=6, Amount=2},
+                new NomenclatureInStore {Id=19, StoreId=2, NomenclatureId=4, FeaturesSet=9, Amount=7},
+                //new NomenclatureInStore {Id=7, StoreId=2, NomenclatureId=1, FeaturesSet=3, Amount=11},
+                //new NomenclatureInStore {Id=8, StoreId=2, NomenclatureId=1, FeaturesSet=4, Amount=8},
+
+                new NomenclatureInStore {Id=20, StoreId=2, NomenclatureId=5, FeaturesSet=1, Amount=3},
+                new NomenclatureInStore {Id=21, StoreId=2, NomenclatureId=5, FeaturesSet=2, Amount=5},
+                new NomenclatureInStore {Id=22, StoreId=2, NomenclatureId=5, FeaturesSet=10, Amount=11},
+                //new NomenclatureInStore {Id=8, StoreId=2, NomenclatureId=1, FeaturesSet=4, Amount=8},
+
+                new NomenclatureInStore {Id=23, StoreId=2, NomenclatureId=6, FeaturesSet=8, Amount=2},
+                new NomenclatureInStore {Id=24, StoreId=2, NomenclatureId=6, FeaturesSet=11, Amount=1},
+                new NomenclatureInStore {Id=25, StoreId=2, NomenclatureId=6, FeaturesSet=12, Amount=9},
+                new NomenclatureInStore {Id=26, StoreId=2, NomenclatureId=6, FeaturesSet=13, Amount=3},            
             };
             nomenclatureinstores.ForEach(x => context.NomenclatureInStores.Add(x));
             context.SaveChanges();
