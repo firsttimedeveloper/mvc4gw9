@@ -32,7 +32,8 @@ namespace mvc4gw9.Models
                 new Group {Id=6, Name="Dockers", ParentGroupId = 5},
                 new Group {Id=7, Name="TomTailor", ParentGroupId = 5},
                 new Group {Id=8, Name="sOliver", ParentGroupId = 5},
-                new Group {Id=9, Name="Одежда", ParentGroupId = 2},
+                new Group {Id=9, Name="Зимняя одежда", ParentGroupId = 2},
+                new Group {Id=10, Name="Exes", ParentGroupId = 9},
             };
             groups.ForEach(x => context.Groups.Add(x));
             context.SaveChanges();
@@ -44,6 +45,7 @@ namespace mvc4gw9.Models
                 new Nomenclature {Id=4, GroupId=7, Name="Слипперы TomTailor", Description="Лицевой материал: брезент. Подкладка: текстиль. Стелька: текстиль. По бокам — эластичные вставки. Застежка: отсутствует"},
                 new Nomenclature {Id=5, GroupId=7, Name="Ботинки TomTailor", Description="Искусственная кожа. Подкладка: сохраняет тепло. Стелька: текстиль. Технология TEX, мягкий воротник и дополнительная молния. Тип застежки: шнуровка"},
                 new Nomenclature {Id=6, GroupId=6, Name="Ботинки на шнуровке Dockers", Description="Лицевой материал: брезент. Подкладка: текстиль. Стелька: текстиль. Тип застежки: шнуровка"},
+                new Nomenclature {Id=7, GroupId=10, Name="Куртка-софтшелл Exes", Description="Модель выполнена из влаго- и ветронепроницаемого материала. С системой SOS. Манжеты на рукавах с отверстиями для больших пальцев. Со светоотражателями"}
             };
             nomenclature.ForEach(x => context.Nomenclature.Add(x));
             context.SaveChanges();
@@ -61,7 +63,15 @@ namespace mvc4gw9.Models
                 new FeaturesSet {Id=10, Name="brown 39"},
                 new FeaturesSet {Id=11, Name="gray 38"},
                 new FeaturesSet {Id=12, Name="gray 39"},
-                new FeaturesSet {Id=13, Name="gray 41"}
+                new FeaturesSet {Id=13, Name="gray 41"},
+                new FeaturesSet {Id=14, Name="blue-green 116/122"},
+                new FeaturesSet {Id=15, Name="blue-green 128/134"},
+                new FeaturesSet {Id=16, Name="blue-green 140/146"},
+                new FeaturesSet {Id=17, Name="blue-green 152/158"},
+                new FeaturesSet {Id=18, Name="blue-red 116/122"},
+                new FeaturesSet {Id=19, Name="blue-red 128/134"},
+                new FeaturesSet {Id=20, Name="blue-red 140/146"},
+                new FeaturesSet {Id=21, Name="blue-red 164/170"},
             };
             featuressets.ForEach(x => context.FeaturesSets.Add(x));
             context.SaveChanges();
@@ -102,8 +112,22 @@ namespace mvc4gw9.Models
                 new FeaturesOfNomenclature {Id=22, FeaturesSetId=12, CharacteristicId=2, Value="39"},
                 new FeaturesOfNomenclature {Id=23, FeaturesSetId=13, CharacteristicId=1, Value="gray"},
                 new FeaturesOfNomenclature {Id=24, FeaturesSetId=13, CharacteristicId=2, Value="41"},
-
-
+                new FeaturesOfNomenclature {Id=25, FeaturesSetId=14, CharacteristicId=1, Value="blue-green"},
+                new FeaturesOfNomenclature {Id=26, FeaturesSetId=14, CharacteristicId=2, Value="116/122"},
+                new FeaturesOfNomenclature {Id=27, FeaturesSetId=15, CharacteristicId=1, Value="blue-green"},
+                new FeaturesOfNomenclature {Id=28, FeaturesSetId=15, CharacteristicId=2, Value="128/134"},
+                new FeaturesOfNomenclature {Id=29, FeaturesSetId=16, CharacteristicId=1, Value="blue-green"},
+                new FeaturesOfNomenclature {Id=30, FeaturesSetId=16, CharacteristicId=2, Value="140/146"},
+                new FeaturesOfNomenclature {Id=31, FeaturesSetId=17, CharacteristicId=1, Value="blue-green"},
+                new FeaturesOfNomenclature {Id=32, FeaturesSetId=17, CharacteristicId=2, Value="152/158"},
+                new FeaturesOfNomenclature {Id=33, FeaturesSetId=18, CharacteristicId=1, Value="blue-red"},
+                new FeaturesOfNomenclature {Id=34, FeaturesSetId=18, CharacteristicId=2, Value="116/122"},
+                new FeaturesOfNomenclature {Id=35, FeaturesSetId=19, CharacteristicId=1, Value="blue-red"},
+                new FeaturesOfNomenclature {Id=36, FeaturesSetId=19, CharacteristicId=2, Value="128/134"},
+                new FeaturesOfNomenclature {Id=37, FeaturesSetId=20, CharacteristicId=1, Value="blue-red"},
+                new FeaturesOfNomenclature {Id=38, FeaturesSetId=20, CharacteristicId=2, Value="140/146"},
+                new FeaturesOfNomenclature {Id=39, FeaturesSetId=21, CharacteristicId=1, Value="blue-red"},
+                new FeaturesOfNomenclature {Id=40, FeaturesSetId=21, CharacteristicId=2, Value="164/170"},
 
             };
             featuresofnumenclatures.ForEach(x => context.FeaturesOfNomenclatures.Add(x));
@@ -131,6 +155,14 @@ namespace mvc4gw9.Models
                 new NomenclatureView {Id=17, NomenclatureId=6, FeaturesSetId=11, Image="boots6_gray"},
                 new NomenclatureView {Id=18, NomenclatureId=6, FeaturesSetId=12, Image="boots6_gray"},
                 new NomenclatureView {Id=19, NomenclatureId=6, FeaturesSetId=13, Image="boots6_gray"},
+                new NomenclatureView {Id=20, NomenclatureId=7, FeaturesSetId=14, Image="coat1_blue-green"},
+                new NomenclatureView {Id=21, NomenclatureId=7, FeaturesSetId=15, Image="coat1_blue-green"},
+                new NomenclatureView {Id=22, NomenclatureId=7, FeaturesSetId=16, Image="coat1_blue-green"},
+                new NomenclatureView {Id=23, NomenclatureId=7, FeaturesSetId=17, Image="coat1_blue-green"},
+                new NomenclatureView {Id=24, NomenclatureId=7, FeaturesSetId=18, Image="coat1_blue-red"},
+                new NomenclatureView {Id=25, NomenclatureId=7, FeaturesSetId=19, Image="coat1_blue-red"},
+                new NomenclatureView {Id=26, NomenclatureId=7, FeaturesSetId=20, Image="coat1_blue-red"},
+                new NomenclatureView {Id=27, NomenclatureId=7, FeaturesSetId=21, Image="coat1_blue-red"},
 
             };
 
@@ -188,6 +220,17 @@ namespace mvc4gw9.Models
                 new NomenclatureInStore {Id=24, StoreId=2, NomenclatureId=6, FeaturesSet=11, Amount=1},
                 new NomenclatureInStore {Id=25, StoreId=2, NomenclatureId=6, FeaturesSet=12, Amount=9},
                 new NomenclatureInStore {Id=26, StoreId=2, NomenclatureId=6, FeaturesSet=13, Amount=3},            
+
+                new NomenclatureInStore {Id=23, StoreId=2, NomenclatureId=7, FeaturesSet=14, Amount=5},
+                new NomenclatureInStore {Id=24, StoreId=2, NomenclatureId=7, FeaturesSet=15, Amount=2},
+                new NomenclatureInStore {Id=25, StoreId=2, NomenclatureId=7, FeaturesSet=16, Amount=10},
+                new NomenclatureInStore {Id=26, StoreId=2, NomenclatureId=7, FeaturesSet=17, Amount=5},            
+
+                new NomenclatureInStore {Id=23, StoreId=2, NomenclatureId=7, FeaturesSet=18, Amount=1},
+                new NomenclatureInStore {Id=24, StoreId=2, NomenclatureId=7, FeaturesSet=19, Amount=5},
+                new NomenclatureInStore {Id=25, StoreId=2, NomenclatureId=7, FeaturesSet=20, Amount=12},
+                new NomenclatureInStore {Id=26, StoreId=2, NomenclatureId=7, FeaturesSet=21, Amount=8},            
+            
             };
             nomenclatureinstores.ForEach(x => context.NomenclatureInStores.Add(x));
             context.SaveChanges();
