@@ -594,6 +594,7 @@ color:White;
 
 #product
 {
+float:left;
 margin: 1em;
 background-color:#736E6E;
 }
@@ -635,6 +636,12 @@ margin: 0.5em 0 0 0;
 {
     text-decoration:none;    
 }
+
+.footer
+{
+clear:both;
+}
+
 
 a.selected_value
 {

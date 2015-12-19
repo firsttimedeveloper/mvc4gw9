@@ -1,4 +1,4 @@
-﻿@model IEnumerable<mvc4gw9.Models.Product>
+﻿@model mvc4gw9.Models.ProductsListPageContent
 
 @{
     ViewBag.Title = "Обувь детская";
@@ -10,7 +10,7 @@
 
 <div class="path">
 @{
-    foreach(var group in ViewBag.Path)
+    foreach(var group in Model.Navigation.Path)
     {
         <a href="/Home/ShowGroup?GroupId=@group.Id">@group.Name</a>
             <span>\</span>
@@ -21,7 +21,7 @@
 <div class="navigation">
 @{
     <ul>
-        @foreach(var branch in ViewBag.Branches)
+        @foreach(var branch in Model.Navigation.Branches)
         {
             <li>
                 <a href="/Home/ShowGroup?GroupId=@branch.Group.Id">@branch.Group.Name</a>
@@ -43,7 +43,7 @@
 <div class="products_list">
 
    @{
-       foreach(var product in Model)
+       foreach(var product in Model.Products)
        {
 
         <div class="products_list_item">
@@ -60,4 +60,7 @@
        
     }
 
+</div>
+
+<div class="footer">
 </div>

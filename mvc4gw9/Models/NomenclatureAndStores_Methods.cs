@@ -16,6 +16,14 @@ namespace mvc4gw9.Models
                 return db.Groups.Where(x => x.ParentGroupId == parentGroupId && x.Id!=1).ToList();
             }
         }
+
+        public static int GetGroupId(int nomenclatureId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                return db.Nomenclature.Find(nomenclatureId).GroupId;
+            }
+        }
         
         public static Product GetProduct(int NomenclatureId, int FeaturesSetId)
         {

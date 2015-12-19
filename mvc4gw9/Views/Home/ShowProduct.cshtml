@@ -1,5 +1,4 @@
-﻿@using mvc4gw9.Models
-@model mvc4gw9.Models.Product
+﻿@model mvc4gw9.Models.ProductPageContent
 
 @{
     ViewBag.Title = "Домашняя страница";
@@ -7,7 +6,37 @@
 
 <h2>@ViewBag.Message</h2>
 
+<div class="path">
+    @foreach(var group in Model.Navigation.Path)
+        {
+            @Html.ActionLink(@group.Name, "ShowGroup", new { GroupId=@group.Id})
+            <span>\</span>
+        }
+</div>    
+    
+<br />
+        
+<div class="navigation">
+    <ul>
+    @foreach(var branch in Model.Navigation.Branches)
+    {
+        <li>
+            @Html.ActionLink(@branch.Group.Name, "ShowGroup", new { GroupId=@branch.Group.Id})
+            <ul>
+                @foreach (var subgroup in branch.Subgroups)
+                {
+                    <li>@Html.ActionLink(@subgroup.Name, "ShowGroup", new { GroupId=@subgroup.Id})</li>                
+                }
+            </ul>
+        </li>
+    }
+    </ul>
+</div>
+
+
 <div id="product">
-    @Html.Partial("product_changeParameter", Model)
+    @Html.Partial("product_changeParameter", Model.Product)
 </div>                        
 
+<div class="footer">
+</div>

@@ -38,4 +38,18 @@ namespace mvc4gw9.Models
         public List<Branch> Branches { get; set; }
     }
 
+    public class ProductPageContent
+    {
+        public Product Product { get; set; }
+        public Navigation Navigation { get; set; }
+    }
+
+    public class ProductsListPageContent
+    {
+        public List<Product> Products { get; set; }
+        public Navigation Navigation { get; set; }
+    }
+
+
+
 }

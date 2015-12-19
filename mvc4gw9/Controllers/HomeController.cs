@@ -33,16 +33,25 @@ namespace mvc4gw9.Controllers
 
         public ActionResult ShowProducts(int GroupId)
         {
-            ViewBag.Path = DAL.GetPath(GroupId);
-            ViewBag.Branches = DAL.GetBranches(GroupId);
-            return View(DAL.GetProducts(GroupId));
+            ProductsListPageContent productsListPageContent = new ProductsListPageContent();
+            Navigation navigation = new Navigation();
+            navigation.Path = DAL.GetPath(GroupId);
+            navigation.Branches = DAL.GetBranches(GroupId);
+            productsListPageContent.Navigation = navigation;
+            productsListPageContent.Products = DAL.GetProducts(GroupId);
+            return View(productsListPageContent);
         }
 
         public ActionResult ShowProduct(int nomenclatureId, string featuresSetId)
         {
-            Product product = new Product();
-            product = DAL.GetProduct(nomenclatureId, Convert.ToInt32(featuresSetId));
-            return View(product);
+            int nomenclatureGroupId = DAL.GetGroupId(nomenclatureId);
+            ProductPageContent productsListPageContent = new ProductPageContent();
+            Navigation navigation = new Navigation();
+            navigation.Path = DAL.GetPath(nomenclatureGroupId);
+            navigation.Branches = DAL.GetBranches(nomenclatureGroupId);
+            productsListPageContent.Navigation = navigation;
+            productsListPageContent.Product = DAL.GetProduct(nomenclatureId, Convert.ToInt32(featuresSetId));
+            return View(productsListPageContent);
         }
 
         
