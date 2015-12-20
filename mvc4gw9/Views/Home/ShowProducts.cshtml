@@ -1,13 +1,5 @@
 ﻿@model mvc4gw9.Models.ProductsListPageContent
 
-@{
-    ViewBag.Title = "Обувь детская";
-}
-
-<div class="title">
-    <h1>@ViewBag.Title</h1>
-</div>
-
 <div class="path">
 @{
     foreach(var group in Model.Navigation.Path)
@@ -47,14 +39,18 @@
        {
 
         <div class="products_list_item">
+            
             <a href="/Home/ShowProduct?nomenclatureId=@product.Id&amp;featuresSetId=@product.currentParameters">
                 <img class="products_list_item_image" src="/Content/nomenclature/pictures/@product.Image" alt ="@product.Image"/>
             </a>
 
-          <a href="/Home/ShowProduct?nomenclatureId=@product.Id&amp;featuresSetId=@product.currentParameters">
-               <h3 class="products_list_item_title">@product.Name</h3>
-           </a>
-           </div>
+            <div class="products_list_item_title_area">
+                <a href="/Home/ShowProduct?nomenclatureId=@product.Id&amp;featuresSetId=@product.currentParameters">
+                    @product.Name
+                </a>
+            </div>
+
+       </div>
 
        }
        
