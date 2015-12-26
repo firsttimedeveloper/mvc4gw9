@@ -485,6 +485,14 @@ tr.pager td {
 CUSTOM CSS
 */
 
+
+#body
+{
+width:80%;
+margin:0 10% 0 10%;
+}
+
+
 a:link, a:visited, a:active, a:hover {
         text-decoration: none;
     }
@@ -497,8 +505,8 @@ margin: 0 0 0 1em;
 
 .article_images
 {
-width: auto;
-float:left;
+width: 305px;
+float: left;
 }
 
 
