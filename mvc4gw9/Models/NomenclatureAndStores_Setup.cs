@@ -43,6 +43,7 @@ namespace mvc4gw9.Models
 
                 new Group {Id=14, Name="Брюки", ParentGroupId = 9},                                
                 new Group {Id=15, Name="Scout", ParentGroupId = 14},
+                new Group {Id=16, Name="Exes", ParentGroupId = 14},
 
             };
             groups.ForEach(x => context.Groups.Add(x));
@@ -61,6 +62,8 @@ namespace mvc4gw9.Models
                 new Nomenclature {Id=10, GroupId=12, Name="Лыжная куртка Scout", Description="Капюшон с подкладкой из флиса можно отстегнуть. Со светоотражателями со всех сторон. Всепогодный материал. Защита от ветра на рукавах и снизу. Модель со съемным капюшоном на мягкой флисовой подкладке"},
                 new Nomenclature {Id=11, GroupId=13, Name="Стеганая куртка Arizona", Description="Стеганая куртка с капюшоном от Arizona. Теплая подкладка. Контрастные молнии. Машинная стирка"},
                 new Nomenclature {Id=12, GroupId=15, Name="Лыжные брюки Scout", Description="Для настоящего скаута. Великолепные лыжные брюки с регулируемыми съёмными бретельками. Эластичный пояс, втачной карман с застёжкой на молнию. Разрез с застёжкой-липучкой снизу, защита от ветра. С небольшой вышивкой «Scout»"},
+                new Nomenclature {Id=13, GroupId=16, Name="Зимние брюки Exes", Description="Спортивные утепленные. Модель со съемными эластичными бретелями. Хорошо защищает от влаги и снега. Материал проверен на токсичность.Допускается машинная стирка"},
+                new Nomenclature {Id=14, GroupId=13, Name="Двусторонняя куртка Arizona", Description="Можно носить с двух сторон. Ветро- и водонепроницаемый материал. С прорезными карманами. Куртку можно стирать в стиральной машине"},
             };
             nomenclature.ForEach(x => context.Nomenclature.Add(x));
             context.SaveChanges();
@@ -177,6 +180,24 @@ namespace mvc4gw9.Models
                 new FeaturesSet {Id=98, Name="gray 152"},
                 new FeaturesSet {Id=99, Name="gray 158"},
                 new FeaturesSet {Id=100, Name="gray 164"},
+
+                new FeaturesSet {Id=101, Name="blue 170"},
+                new FeaturesSet {Id=102, Name="blue 176"},
+                new FeaturesSet {Id=103, Name="blue 182"},
+
+                new FeaturesSet {Id=104, Name="brown 92"},
+                new FeaturesSet {Id=105, Name="brown 98"},
+                new FeaturesSet {Id=106, Name="brown 104"},
+                new FeaturesSet {Id=107, Name="brown 110"},
+                new FeaturesSet {Id=108, Name="brown 116"},
+                new FeaturesSet {Id=109, Name="brown 122"},
+                new FeaturesSet {Id=110, Name="brown 128"},
+                new FeaturesSet {Id=111, Name="brown 134"},
+                new FeaturesSet {Id=112, Name="brown 140"},
+                new FeaturesSet {Id=113, Name="brown 146"},
+                new FeaturesSet {Id=114, Name="brown 152"},
+                new FeaturesSet {Id=115, Name="brown 158"},
+                new FeaturesSet {Id=116, Name="brown 164"},
 
             };
             featuressets.ForEach(x => context.FeaturesSets.Add(x));
@@ -411,6 +432,41 @@ namespace mvc4gw9.Models
                 new FeaturesOfNomenclature {Id=169, FeaturesSetId=100, CharacteristicId=1, Value="gray"},
                 new FeaturesOfNomenclature {Id=170, FeaturesSetId=100, CharacteristicId=2, Value="164"},
 
+                new FeaturesOfNomenclature {Id=113, FeaturesSetId=101, CharacteristicId=1, Value="blue"},
+                new FeaturesOfNomenclature {Id=114, FeaturesSetId=101, CharacteristicId=2, Value="170"},
+                new FeaturesOfNomenclature {Id=115, FeaturesSetId=102, CharacteristicId=1, Value="blue"},
+                new FeaturesOfNomenclature {Id=116, FeaturesSetId=102, CharacteristicId=2, Value="176"},
+                new FeaturesOfNomenclature {Id=117, FeaturesSetId=103, CharacteristicId=1, Value="blue"},
+                new FeaturesOfNomenclature {Id=118, FeaturesSetId=103, CharacteristicId=2, Value="182"},
+
+                new FeaturesOfNomenclature {Id=119, FeaturesSetId=104, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=120, FeaturesSetId=104, CharacteristicId=2, Value="92"},
+                new FeaturesOfNomenclature {Id=121, FeaturesSetId=105, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=122, FeaturesSetId=105, CharacteristicId=2, Value="98"},
+                new FeaturesOfNomenclature {Id=123, FeaturesSetId=106, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=124, FeaturesSetId=106, CharacteristicId=2, Value="104"},
+                new FeaturesOfNomenclature {Id=125, FeaturesSetId=107, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=126, FeaturesSetId=107, CharacteristicId=2, Value="110"},
+                new FeaturesOfNomenclature {Id=127, FeaturesSetId=108, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=128, FeaturesSetId=108, CharacteristicId=2, Value="116"},
+                new FeaturesOfNomenclature {Id=129, FeaturesSetId=109, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=130, FeaturesSetId=109, CharacteristicId=2, Value="122"},
+                new FeaturesOfNomenclature {Id=131, FeaturesSetId=110, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=132, FeaturesSetId=110, CharacteristicId=2, Value="128"},
+                new FeaturesOfNomenclature {Id=133, FeaturesSetId=111, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=134, FeaturesSetId=111, CharacteristicId=2, Value="134"},
+                new FeaturesOfNomenclature {Id=135, FeaturesSetId=112, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=136, FeaturesSetId=112, CharacteristicId=2, Value="140"},
+                new FeaturesOfNomenclature {Id=137, FeaturesSetId=113, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=138, FeaturesSetId=113, CharacteristicId=2, Value="146"},
+                new FeaturesOfNomenclature {Id=139, FeaturesSetId=114, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=140, FeaturesSetId=114, CharacteristicId=2, Value="152"},
+                new FeaturesOfNomenclature {Id=141, FeaturesSetId=115, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=142, FeaturesSetId=115, CharacteristicId=2, Value="158"},
+                new FeaturesOfNomenclature {Id=143, FeaturesSetId=116, CharacteristicId=1, Value="brown"},
+                new FeaturesOfNomenclature {Id=144, FeaturesSetId=116, CharacteristicId=2, Value="164"},
+
+
             };
             featuresofnumenclatures.ForEach(x => context.FeaturesOfNomenclatures.Add(x));
             context.SaveChanges();
@@ -525,19 +581,41 @@ namespace mvc4gw9.Models
                 new NomenclatureView {Id=74, NomenclatureId=12, FeaturesSetId=86, Image="wintertrousers1_red"},
                 new NomenclatureView {Id=75, NomenclatureId=12, FeaturesSetId=87, Image="wintertrousers1_red"},
 
-                new NomenclatureView {Id=63, NomenclatureId=12, FeaturesSetId=88, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=64, NomenclatureId=12, FeaturesSetId=89, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=65, NomenclatureId=12, FeaturesSetId=90, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=66, NomenclatureId=12, FeaturesSetId=91, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=67, NomenclatureId=12, FeaturesSetId=92, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=68, NomenclatureId=12, FeaturesSetId=93, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=69, NomenclatureId=12, FeaturesSetId=94, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=70, NomenclatureId=12, FeaturesSetId=95, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=71, NomenclatureId=12, FeaturesSetId=96, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=72, NomenclatureId=12, FeaturesSetId=97, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=73, NomenclatureId=12, FeaturesSetId=98, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=74, NomenclatureId=12, FeaturesSetId=99, Image="wintertrousers1_gray"},
-                new NomenclatureView {Id=75, NomenclatureId=12, FeaturesSetId=100, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=76, NomenclatureId=12, FeaturesSetId=88, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=77, NomenclatureId=12, FeaturesSetId=89, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=78, NomenclatureId=12, FeaturesSetId=90, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=79, NomenclatureId=12, FeaturesSetId=91, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=80, NomenclatureId=12, FeaturesSetId=92, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=81, NomenclatureId=12, FeaturesSetId=93, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=82, NomenclatureId=12, FeaturesSetId=94, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=83, NomenclatureId=12, FeaturesSetId=95, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=84, NomenclatureId=12, FeaturesSetId=96, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=85, NomenclatureId=12, FeaturesSetId=97, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=86, NomenclatureId=12, FeaturesSetId=98, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=87, NomenclatureId=12, FeaturesSetId=99, Image="wintertrousers1_gray"},
+                new NomenclatureView {Id=88, NomenclatureId=12, FeaturesSetId=100, Image="wintertrousers1_gray"},
+
+                new NomenclatureView {Id=89, NomenclatureId=13, FeaturesSetId=68, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=90, NomenclatureId=13, FeaturesSetId=69, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=91, NomenclatureId=13, FeaturesSetId=70, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=92, NomenclatureId=13, FeaturesSetId=71, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=93, NomenclatureId=13, FeaturesSetId=72, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=94, NomenclatureId=13, FeaturesSetId=73, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=95, NomenclatureId=13, FeaturesSetId=74, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=96, NomenclatureId=13, FeaturesSetId=101, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=97, NomenclatureId=13, FeaturesSetId=102, Image="wintertrousers2_blue"},
+                new NomenclatureView {Id=98, NomenclatureId=13, FeaturesSetId=103, Image="wintertrousers2_blue"},
+
+                new NomenclatureView {Id=99, NomenclatureId=14, FeaturesSetId=104, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=100, NomenclatureId=14, FeaturesSetId=105, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=101, NomenclatureId=14, FeaturesSetId=106, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=102, NomenclatureId=14, FeaturesSetId=107, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=103, NomenclatureId=14, FeaturesSetId=108, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=104, NomenclatureId=14, FeaturesSetId=109, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=105, NomenclatureId=14, FeaturesSetId=110, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=106, NomenclatureId=14, FeaturesSetId=111, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=107, NomenclatureId=14, FeaturesSetId=112, Image="wintertrousers3_brown"},
+                new NomenclatureView {Id=108, NomenclatureId=14, FeaturesSetId=113, Image="wintertrousers3_brown"},
 
             };
 
@@ -692,6 +770,29 @@ namespace mvc4gw9.Models
                 new NomenclatureInStore {Id=103, StoreId=1, NomenclatureId=12, FeaturesSet=98, Amount=2},
                 new NomenclatureInStore {Id=104, StoreId=1, NomenclatureId=12, FeaturesSet=99, Amount=10},
                 new NomenclatureInStore {Id=105, StoreId=2, NomenclatureId=12, FeaturesSet=100, Amount=9},
+
+                new NomenclatureInStore {Id=106, StoreId=3, NomenclatureId=13, FeaturesSet=68, Amount=5},
+                new NomenclatureInStore {Id=107, StoreId=2, NomenclatureId=13, FeaturesSet=69, Amount=7},
+                new NomenclatureInStore {Id=108, StoreId=2, NomenclatureId=13, FeaturesSet=70, Amount=2},
+                new NomenclatureInStore {Id=109, StoreId=2, NomenclatureId=13, FeaturesSet=71, Amount=1},
+                new NomenclatureInStore {Id=110, StoreId=1, NomenclatureId=13, FeaturesSet=72, Amount=1},
+                new NomenclatureInStore {Id=111, StoreId=2, NomenclatureId=13, FeaturesSet=73, Amount=8},
+                new NomenclatureInStore {Id=112, StoreId=3, NomenclatureId=13, FeaturesSet=74, Amount=5},
+                new NomenclatureInStore {Id=113, StoreId=1, NomenclatureId=13, FeaturesSet=101, Amount=1},
+                new NomenclatureInStore {Id=114, StoreId=2, NomenclatureId=13, FeaturesSet=102, Amount=10},
+                new NomenclatureInStore {Id=115, StoreId=1, NomenclatureId=13, FeaturesSet=103, Amount=11},
+
+                new NomenclatureInStore {Id=116, StoreId=1, NomenclatureId=14, FeaturesSet=104, Amount=4},
+                new NomenclatureInStore {Id=117, StoreId=1, NomenclatureId=14, FeaturesSet=105, Amount=2},
+                new NomenclatureInStore {Id=118, StoreId=3, NomenclatureId=14, FeaturesSet=106, Amount=9},
+                new NomenclatureInStore {Id=119, StoreId=1, NomenclatureId=14, FeaturesSet=107, Amount=10},
+                new NomenclatureInStore {Id=120, StoreId=1, NomenclatureId=14, FeaturesSet=108, Amount=1},
+                new NomenclatureInStore {Id=121, StoreId=3, NomenclatureId=14, FeaturesSet=109, Amount=3},
+                new NomenclatureInStore {Id=122, StoreId=2, NomenclatureId=14, FeaturesSet=110, Amount=6},
+                new NomenclatureInStore {Id=123, StoreId=2, NomenclatureId=14, FeaturesSet=111, Amount=3},
+                new NomenclatureInStore {Id=124, StoreId=3, NomenclatureId=14, FeaturesSet=112, Amount=7},
+                new NomenclatureInStore {Id=125, StoreId=1, NomenclatureId=14, FeaturesSet=113, Amount=1},
+                new NomenclatureInStore {Id=126, StoreId=2, NomenclatureId=14, FeaturesSet=113, Amount=2},
 
             };
             nomenclatureinstores.ForEach(x => context.NomenclatureInStores.Add(x));
