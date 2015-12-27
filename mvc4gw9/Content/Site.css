@@ -1,16 +1,22 @@
 ﻿html {
-    background-color: #e2e2e2;
+    background-color: #818181;
     margin: 0;
     padding: 0;
 }
 
 body {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom:0;
+    margin-top:0;
+    padding: 0;
+    
     background-color: #c3c1c1;
     color: #333;
     font-size: .85em;
     font-family: Arial;
-    margin: 0;
-    padding: 0;
+
 }
 
 mark {
@@ -99,31 +105,8 @@ footer {
     }
 
 
-/* menu
+/* main_menu
 ----------------------------------------------------------*/
-ul#menu {
-    font-size: 1.3em;
-    font-weight: 600;
-    margin: 0 0 5px;
-    padding: 0;
-}
-
-    ul#menu li {
-        display: inline;
-        list-style: none;
-        padding-left: 15px;
-    }
-
-        ul#menu li a {
-            background: none;
-            color: #999;
-            text-decoration: none;
-        }
-
-        ul#menu li a:hover {
-            color: #333;
-            text-decoration: none;
-        }
 
 
 
@@ -486,10 +469,50 @@ CUSTOM CSS
 */
 
 
-#body
-{
-width:80%;
-margin:0 10% 0 10%;
+#title {
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+    color:#525252;
+    background-color: #e1e1e1;
+}
+
+
+#menu {
+    background-color:#736e6e;
+}
+
+
+#menu ul {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+    #menu ul li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        #menu ul li a {
+            background: none;
+            color: #d8d8d8;
+            text-decoration: none;
+        }
+
+        #menu ul li a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+
+
+#body {
+    margin: 0;
+    padding: 0;
+    background-color: #c3c1c1;
 }
 
 
@@ -532,6 +555,7 @@ text-decoration: none;
 
 .navigation
 {
+    width: 15%;
     margin: 0;
     float: left;
 }
@@ -556,8 +580,8 @@ text-decoration: none;
     margin: 0.2em 0em 0.7em 1em;
 }
 
-.products_list
-{
+.products_list {
+    width: 85%;
     float:left;
 }
 
@@ -605,7 +629,6 @@ color: White;
 {
 float: left;
 margin: 1em;
-background-color: #736E6E;
 }
 
 .bigImage
@@ -654,9 +677,16 @@ margin: 0.5em 0 0 0;
     text-decoration: none;    
 }
 
-.footer
-{
-clear:both;
+#footer {
+    clear:left;
+    width:100%;
+    height:50px;
+    background-color:#736e6e;
+
+    color:#b5b5b5;
+    text-align:center;
+    font-size:12px;
+    font-weight: bold;
 }
 
 
