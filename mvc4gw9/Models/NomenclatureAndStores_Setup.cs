@@ -199,6 +199,20 @@ namespace mvc4gw9.Models
                 new FeaturesSet {Id=115, Name="brown 158"},
                 new FeaturesSet {Id=116, Name="brown 164"},
 
+                new FeaturesSet {Id=117, Name="black 92"},
+                new FeaturesSet {Id=118, Name="black 98"},
+                new FeaturesSet {Id=119, Name="black 104"},
+                new FeaturesSet {Id=120, Name="black 110"},
+                new FeaturesSet {Id=121, Name="black 116"},
+                new FeaturesSet {Id=122, Name="black 122"},
+                new FeaturesSet {Id=123, Name="black 128"},
+                new FeaturesSet {Id=124, Name="black 134"},
+                new FeaturesSet {Id=125, Name="black 140"},
+                new FeaturesSet {Id=126, Name="black 146"},
+                new FeaturesSet {Id=127, Name="black 152"},
+                new FeaturesSet {Id=128, Name="black 158"},
+                new FeaturesSet {Id=129, Name="black 164"},
+
             };
             featuressets.ForEach(x => context.FeaturesSets.Add(x));
             context.SaveChanges();
@@ -466,6 +480,33 @@ namespace mvc4gw9.Models
                 new FeaturesOfNomenclature {Id=143, FeaturesSetId=116, CharacteristicId=1, Value="brown"},
                 new FeaturesOfNomenclature {Id=144, FeaturesSetId=116, CharacteristicId=2, Value="164"},
 
+                new FeaturesOfNomenclature {Id=119, FeaturesSetId=117, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=120, FeaturesSetId=117, CharacteristicId=2, Value="92"},
+                new FeaturesOfNomenclature {Id=121, FeaturesSetId=118, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=122, FeaturesSetId=118, CharacteristicId=2, Value="98"},
+                new FeaturesOfNomenclature {Id=123, FeaturesSetId=119, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=124, FeaturesSetId=119, CharacteristicId=2, Value="104"},
+                new FeaturesOfNomenclature {Id=125, FeaturesSetId=120, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=126, FeaturesSetId=120, CharacteristicId=2, Value="110"},
+                new FeaturesOfNomenclature {Id=127, FeaturesSetId=121, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=128, FeaturesSetId=121, CharacteristicId=2, Value="116"},
+                new FeaturesOfNomenclature {Id=129, FeaturesSetId=122, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=130, FeaturesSetId=122, CharacteristicId=2, Value="122"},
+                new FeaturesOfNomenclature {Id=131, FeaturesSetId=123, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=132, FeaturesSetId=123, CharacteristicId=2, Value="128"},
+                new FeaturesOfNomenclature {Id=133, FeaturesSetId=124, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=134, FeaturesSetId=124, CharacteristicId=2, Value="134"},
+                new FeaturesOfNomenclature {Id=135, FeaturesSetId=125, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=136, FeaturesSetId=125, CharacteristicId=2, Value="140"},
+                new FeaturesOfNomenclature {Id=137, FeaturesSetId=126, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=138, FeaturesSetId=126, CharacteristicId=2, Value="146"},
+                new FeaturesOfNomenclature {Id=139, FeaturesSetId=127, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=140, FeaturesSetId=127, CharacteristicId=2, Value="152"},
+                new FeaturesOfNomenclature {Id=141, FeaturesSetId=128, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=142, FeaturesSetId=128, CharacteristicId=2, Value="158"},
+                new FeaturesOfNomenclature {Id=143, FeaturesSetId=129, CharacteristicId=1, Value="black"},
+                new FeaturesOfNomenclature {Id=144, FeaturesSetId=129, CharacteristicId=2, Value="164"},
+
 
             };
             featuresofnumenclatures.ForEach(x => context.FeaturesOfNomenclatures.Add(x));
@@ -617,6 +658,33 @@ namespace mvc4gw9.Models
                 new NomenclatureView {Id=107, NomenclatureId=14, FeaturesSetId=112, Image="wintertrousers3_brown"},
                 new NomenclatureView {Id=108, NomenclatureId=14, FeaturesSetId=113, Image="wintertrousers3_brown"},
 
+                new NomenclatureView {Id=109, NomenclatureId=10, FeaturesSetId=117, Image="coat4_black"},
+                new NomenclatureView {Id=110, NomenclatureId=10, FeaturesSetId=118, Image="coat4_black"},
+                new NomenclatureView {Id=111, NomenclatureId=10, FeaturesSetId=119, Image="coat4_black"},
+                new NomenclatureView {Id=112, NomenclatureId=10, FeaturesSetId=120, Image="coat4_black"},
+                new NomenclatureView {Id=113, NomenclatureId=10, FeaturesSetId=121, Image="coat4_black"},
+                new NomenclatureView {Id=114, NomenclatureId=10, FeaturesSetId=122, Image="coat4_black"},
+                new NomenclatureView {Id=115, NomenclatureId=10, FeaturesSetId=123, Image="coat4_black"},
+                new NomenclatureView {Id=116, NomenclatureId=10, FeaturesSetId=124, Image="coat4_black"},
+                new NomenclatureView {Id=117, NomenclatureId=10, FeaturesSetId=125, Image="coat4_black"},
+                new NomenclatureView {Id=118, NomenclatureId=10, FeaturesSetId=126, Image="coat4_black"},
+                new NomenclatureView {Id=119, NomenclatureId=10, FeaturesSetId=127, Image="coat4_black"},
+                new NomenclatureView {Id=120, NomenclatureId=10, FeaturesSetId=128, Image="coat4_black"},
+                new NomenclatureView {Id=121, NomenclatureId=10, FeaturesSetId=129, Image="coat4_black"},
+
+                new NomenclatureView {Id=122, NomenclatureId=10, FeaturesSetId=88, Image="coat4_gray"},
+                new NomenclatureView {Id=123, NomenclatureId=10, FeaturesSetId=89, Image="coat4_gray"},
+                new NomenclatureView {Id=124, NomenclatureId=10, FeaturesSetId=90, Image="coat4_gray"},
+                new NomenclatureView {Id=125, NomenclatureId=10, FeaturesSetId=91, Image="coat4_gray"},
+                new NomenclatureView {Id=126, NomenclatureId=10, FeaturesSetId=92, Image="coat4_gray"},
+                new NomenclatureView {Id=127, NomenclatureId=10, FeaturesSetId=93, Image="coat4_gray"},
+                new NomenclatureView {Id=128, NomenclatureId=10, FeaturesSetId=94, Image="coat4_gray"},
+                new NomenclatureView {Id=129, NomenclatureId=10, FeaturesSetId=95, Image="coat4_gray"},
+                new NomenclatureView {Id=130, NomenclatureId=10, FeaturesSetId=96, Image="coat4_gray"},
+                new NomenclatureView {Id=131, NomenclatureId=10, FeaturesSetId=97, Image="coat4_gray"},
+                new NomenclatureView {Id=132, NomenclatureId=10, FeaturesSetId=98, Image="coat4_gray"},
+                new NomenclatureView {Id=133, NomenclatureId=10, FeaturesSetId=99, Image="coat4_gray"},
+                new NomenclatureView {Id=134, NomenclatureId=10, FeaturesSetId=100, Image="coat4_gray"}
             };
 
             nomenclatureviews.ForEach(x => context.NomenclatureViews.Add(x));
@@ -793,6 +861,34 @@ namespace mvc4gw9.Models
                 new NomenclatureInStore {Id=124, StoreId=3, NomenclatureId=14, FeaturesSet=112, Amount=7},
                 new NomenclatureInStore {Id=125, StoreId=1, NomenclatureId=14, FeaturesSet=113, Amount=1},
                 new NomenclatureInStore {Id=126, StoreId=2, NomenclatureId=14, FeaturesSet=113, Amount=2},
+
+                new NomenclatureInStore {Id=127, StoreId=2, NomenclatureId=10, FeaturesSet=117, Amount=1},
+                new NomenclatureInStore {Id=128, StoreId=2, NomenclatureId=10, FeaturesSet=118, Amount=10},
+                new NomenclatureInStore {Id=129, StoreId=3, NomenclatureId=10, FeaturesSet=119, Amount=2},
+                new NomenclatureInStore {Id=130, StoreId=1, NomenclatureId=10, FeaturesSet=120, Amount=7},
+                new NomenclatureInStore {Id=132, StoreId=1, NomenclatureId=10, FeaturesSet=121, Amount=9},
+                new NomenclatureInStore {Id=132, StoreId=3, NomenclatureId=10, FeaturesSet=122, Amount=1},
+                new NomenclatureInStore {Id=133, StoreId=1, NomenclatureId=10, FeaturesSet=123, Amount=4},
+                new NomenclatureInStore {Id=134, StoreId=3, NomenclatureId=10, FeaturesSet=124, Amount=8},
+                new NomenclatureInStore {Id=135, StoreId=1, NomenclatureId=10, FeaturesSet=125, Amount=2},
+                new NomenclatureInStore {Id=136, StoreId=2, NomenclatureId=10, FeaturesSet=126, Amount=10},
+                new NomenclatureInStore {Id=137, StoreId=2, NomenclatureId=10, FeaturesSet=127, Amount=6},
+                new NomenclatureInStore {Id=138, StoreId=3, NomenclatureId=10, FeaturesSet=128, Amount=4},
+                new NomenclatureInStore {Id=139, StoreId=2, NomenclatureId=10, FeaturesSet=129, Amount=9},
+
+                new NomenclatureInStore {Id=140, StoreId=3, NomenclatureId=10, FeaturesSet=88, Amount=5},
+                new NomenclatureInStore {Id=141, StoreId=1, NomenclatureId=10, FeaturesSet=89, Amount=6},
+                new NomenclatureInStore {Id=142, StoreId=1, NomenclatureId=10, FeaturesSet=90, Amount=1},
+                new NomenclatureInStore {Id=143, StoreId=3, NomenclatureId=10, FeaturesSet=91, Amount=4},
+                new NomenclatureInStore {Id=144, StoreId=2, NomenclatureId=10, FeaturesSet=92, Amount=10},
+                new NomenclatureInStore {Id=145, StoreId=2, NomenclatureId=10, FeaturesSet=93, Amount=1},
+                new NomenclatureInStore {Id=146, StoreId=1, NomenclatureId=10, FeaturesSet=94, Amount=1},
+                new NomenclatureInStore {Id=147, StoreId=2, NomenclatureId=10, FeaturesSet=95, Amount=3},
+                new NomenclatureInStore {Id=148, StoreId=3, NomenclatureId=10, FeaturesSet=96, Amount=5},
+                new NomenclatureInStore {Id=149, StoreId=1, NomenclatureId=10, FeaturesSet=97, Amount=3},
+                new NomenclatureInStore {Id=150, StoreId=3, NomenclatureId=10, FeaturesSet=98, Amount=1},
+                new NomenclatureInStore {Id=151, StoreId=1, NomenclatureId=10, FeaturesSet=99, Amount=12},
+                new NomenclatureInStore {Id=152, StoreId=1, NomenclatureId=10, FeaturesSet=100, Amount=2},
 
             };
             nomenclatureinstores.ForEach(x => context.NomenclatureInStores.Add(x));
