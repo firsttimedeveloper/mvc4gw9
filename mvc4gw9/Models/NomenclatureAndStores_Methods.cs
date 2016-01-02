@@ -107,6 +107,71 @@ namespace mvc4gw9.Models
             return product;
         }
 
+        public static List<Product> GetProducts(int GroupId)
+        {
+            List<Product> products = new List<Product>();
+            using (DBContext db = new DBContext())
+            {
+                List<int> _nomenclatureIds = db.NomenclatureInStores.Where(x => x.Amount > 0).Select(x => x.NomenclatureId).ToList();
+                List<int> nomenclatureIds = new List<int>();
+
+                foreach (int _nomenclatureId in _nomenclatureIds)
+                {
+                    bool a = nomenclatureIds.Exists(x => x == _nomenclatureId);
+                    if (!nomenclatureIds.Exists(x => x == _nomenclatureId)) nomenclatureIds.Add(_nomenclatureId);
+                }
+
+                foreach (int nomenclatureId in nomenclatureIds)
+                {
+                    Product product = new Product();
+                    product.Id = nomenclatureId;
+                    product.Name = db.Nomenclature.Find(nomenclatureId).Name;
+                    product.Image = db.NomenclatureViews.FirstOrDefault(x => x.NomenclatureId == nomenclatureId).Image + "1.jpg";
+                    product.currentParameters = db.NomenclatureInStores.FirstOrDefault(x => x.NomenclatureId == nomenclatureId && x.Amount > 0).FeaturesSet.ToString();
+
+                    if (db.Nomenclature.Find(nomenclatureId).GroupId == GroupId) products.Add(product);
+                }
+            }
+
+            return products;
+        }
+
+        public static ShoppingBasketAddPageContent GetProductInStores(int nomenclatureId, int featuresSetId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                var entities = from A in db.NomenclatureInStores
+                               where (A.NomenclatureId == nomenclatureId && A.FeaturesSet == featuresSetId)
+                               join B in db.Stores on A.StoreId equals B.Id
+                               select new
+                                   {
+                                        StoreName = B.Name,
+                                        StoreAddress = B.Address,
+                                        Amount = A.Amount
+                                   };
+
+                List<ProductInStore> productInStores = new List<ProductInStore>();
+                foreach (var item in entities)
+                {
+                    ProductInStore productInStore = new ProductInStore();
+                    productInStore.StoreName = item.StoreName;
+                    productInStore.StoreAddress = item.StoreAddress;
+                    productInStore.ProductAmount = item.Amount;
+                    productInStores.Add(productInStore);                  
+                }
+
+                ShoppingBasketAddPageContent product = new ShoppingBasketAddPageContent();
+                product.ProductName = db.Nomenclature.Find(nomenclatureId).Name.ToString();
+                product.ProductFeaturesSet = db.FeaturesSets.Find(featuresSetId).Name.ToString();
+                string path = AppDomain.CurrentDomain.BaseDirectory + @"/Content/nomenclature/pictures/";
+                string filename = db.NomenclatureViews.FirstOrDefault(x => x.NomenclatureId == nomenclatureId && x.FeaturesSetId == featuresSetId).Image.ToString() + "1.jpg";
+                product.ProductImage = filename;
+                product.ProductInStores = productInStores;
+
+                return product;
+            }
+        }
+
         public static string GetNewCurentParametersString(string parameter, string value, string parametersString)
         {
             string[] parameters = parametersString.Split((char)32);
@@ -126,6 +191,73 @@ namespace mvc4gw9.Models
                 }
             }
             return newCurrentParametersString;
+        }
+
+        public static int GetFeaturesSetId(int nomenclatureId, string parametersString)
+        {
+            string[] parameters = parametersString.Split((char)32);
+            int k = parameters.Count();
+            string[] parameterName = new string[k];
+            string[] parameterValue = new string[k];
+            for (int i = 0; i < k; i++)
+            {
+                parameterName[i] = parameters[i].Split('=')[0];
+                parameterValue[i] = parameters[i].Split('=')[1];
+
+            }
+
+            List<FeaturesOfNomenclature> featuresOfNomenclature = new List<FeaturesOfNomenclature>();
+            List<FeaturesOfNomenclature> featuresOfNomenclature_buffer = new List<FeaturesOfNomenclature>();
+            List<FeaturesOfNomenclature> featuresOfNomenclature_add = new List<FeaturesOfNomenclature>();
+            List<int> featuresOfNomenclatureId = new List<int>();
+
+            using (DBContext db = new DBContext())
+            {
+                featuresOfNomenclature = db.FeaturesOfNomenclatures.ToList();
+
+                for (int i = 0; i < k; i++)
+                {
+                    string parametername = parameterName[i];
+                    int characteristicId = db.Characteristics.FirstOrDefault(x => x.Name == parametername).Id;
+                    featuresOfNomenclatureId = featuresOfNomenclature.Where(x => x.CharacteristicId == characteristicId && x.Value == parameterValue[i]).Select(x => x.FeaturesSetId).ToList();
+
+                    foreach (int id in featuresOfNomenclatureId)
+                    {
+                        featuresOfNomenclature_add = featuresOfNomenclature.Where(x => x.FeaturesSetId == id && x.CharacteristicId != characteristicId).ToList();
+                        featuresOfNomenclature_buffer.AddRange(featuresOfNomenclature_add);
+                    }
+                    featuresOfNomenclature = featuresOfNomenclature_buffer;
+                }
+
+                int _featuresOfNomenclatureId = (featuresOfNomenclatureId.Count() == 0) ? 0 : featuresOfNomenclatureId[0];
+                if (db.NomenclatureInStores.Where(x => x.NomenclatureId == nomenclatureId && x.FeaturesSet == _featuresOfNomenclatureId && x.Amount > 0).ToList().Count == 0)
+                {
+                    for (int i = 0; i < k; i++)
+                    {
+                        parameterName[i] = parameters[i].Split('=')[0];
+                        parameterValue[i] = parameters[i].Split('=')[1];
+                    }
+
+                    featuresOfNomenclature = db.FeaturesOfNomenclatures.ToList();
+                    featuresOfNomenclature_buffer = new List<FeaturesOfNomenclature>();
+
+                    for (int i = 0; i < k; i++)
+                    {
+                        string parametername = parameterName[i];
+                        int characteristicId = db.Characteristics.FirstOrDefault(x => x.Name == parametername).Id;
+                        featuresOfNomenclatureId = featuresOfNomenclature.Where(x => x.CharacteristicId == characteristicId && x.Value == parameterValue[i]).Select(x => x.FeaturesSetId).ToList();
+
+                        foreach (int id in featuresOfNomenclatureId)
+                        {
+                            featuresOfNomenclature_add = featuresOfNomenclature.Where(x => x.FeaturesSetId == id && x.CharacteristicId != characteristicId).ToList();
+                            featuresOfNomenclature_buffer.AddRange(featuresOfNomenclature_add);
+                        }
+                        featuresOfNomenclature = featuresOfNomenclature_buffer;
+                    }
+                }
+            }
+            return featuresOfNomenclatureId[0];
+        
         }
 
         public static int GetNewFeaturesSetId(int NomenclatureId, string parameter, string value, string parametersString)
@@ -198,35 +330,6 @@ namespace mvc4gw9.Models
                 }
             }
             return featuresOfNomenclatureId[0];
-        }
-
-        public static List<Product> GetProducts(int GroupId)
-        {
-            List<Product> products = new List<Product>();
-            using (DBContext db = new DBContext())
-            {
-                List<int> _nomenclatureIds = db.NomenclatureInStores.Where(x => x.Amount > 0).Select(x => x.NomenclatureId).ToList();
-                List<int> nomenclatureIds = new List<int>();
-
-                foreach (int _nomenclatureId in _nomenclatureIds)
-                {
-                    bool a = nomenclatureIds.Exists(x => x == _nomenclatureId);
-                    if (!nomenclatureIds.Exists(x => x == _nomenclatureId)) nomenclatureIds.Add(_nomenclatureId);
-                }
-
-                foreach (int nomenclatureId in nomenclatureIds)
-                {
-                    Product product = new Product();
-                    product.Id = nomenclatureId;
-                    product.Name = db.Nomenclature.Find(nomenclatureId).Name;
-                    product.Image = db.NomenclatureViews.FirstOrDefault(x => x.NomenclatureId == nomenclatureId).Image + "1.jpg";
-                    product.currentParameters = db.NomenclatureInStores.FirstOrDefault(x => x.NomenclatureId == nomenclatureId && x.Amount > 0).FeaturesSet.ToString();
-
-                    if (db.Nomenclature.Find(nomenclatureId).GroupId == GroupId) products.Add(product);
-                }
-            }
-
-            return products;
         }
 
         public static List<Group> GetPath(int GroupId)

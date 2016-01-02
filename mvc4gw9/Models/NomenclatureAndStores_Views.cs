@@ -18,6 +18,13 @@ namespace mvc4gw9.Models
         public List<string> Gallery { get; set; }
     }
 
+    public class ProductInStore
+    {
+        public string StoreName { get; set; }
+        public string StoreAddress { get; set; }
+        public int ProductAmount { get; set; }
+    }
+
     public class Parameter
     {
         public int Id { get; set; }
@@ -50,6 +57,13 @@ namespace mvc4gw9.Models
         public Navigation Navigation { get; set; }
     }
 
+    public class ShoppingBasketAddPageContent
+    {
+        public string ProductName { get; set; }
+        public string ProductFeaturesSet { get; set; }
+        public string ProductImage { get; set; }
+        public List<ProductInStore> ProductInStores { get; set; }
+    }
 
 
 }

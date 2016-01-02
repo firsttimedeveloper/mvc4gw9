@@ -19,7 +19,7 @@ namespace mvc4gw9.Models
         public DbSet<NomenclatureInStore> NomenclatureInStores { get; set; }
     }
 
-    public class DBInitializer : DropCreateDatabaseAlways<DBContext>
+    public class DBInitializer : CreateDatabaseIfNotExists<DBContext>
     {
         protected override void Seed(DBContext context)
         {
@@ -692,9 +692,9 @@ namespace mvc4gw9.Models
 
             List<Store> stores = new List<Store>() 
             {
-                new Store {Id=1, Name="Main"},
-                new Store {Id=2, Name="Sub1"},
-                new Store {Id=3, Name="Sub2"}
+                new Store {Id=1, Name="Основной склад", Address="01000001 г.Одноименный ул.Основная д.1 стр.1"},
+                new Store {Id=2, Name="Склад на Левой", Address="01000002 г.Одноименный ул.Левая д.2 стр.1а"},
+                new Store {Id=3, Name="Склад на Правой", Address="01000001 г.Одноименный ул.Правая д.3 стр.1б"}
             };
             stores.ForEach(x => context.Stores.Add(x));
             context.SaveChanges();
@@ -703,13 +703,13 @@ namespace mvc4gw9.Models
             {
                 new NomenclatureInStore {Id=1, StoreId=1, NomenclatureId=1, FeaturesSet=1, Amount=7},
                 new NomenclatureInStore {Id=2, StoreId=1, NomenclatureId=1, FeaturesSet=2, Amount=5},
-                //new NomenclatureInStore {Id=3, StoreId=1, NomenclatureId=1, FeaturesSet=3, Amount=10},
-                //new NomenclatureInStore {Id=4, StoreId=1, NomenclatureId=1, FeaturesSet=4, Amount=2},
+                new NomenclatureInStore {Id=3, StoreId=1, NomenclatureId=1, FeaturesSet=3, Amount=10},
+                new NomenclatureInStore {Id=4, StoreId=1, NomenclatureId=1, FeaturesSet=4, Amount=2},
 
                 new NomenclatureInStore {Id=5, StoreId=2, NomenclatureId=1, FeaturesSet=1, Amount=2},
-                new NomenclatureInStore {Id=6, StoreId=2, NomenclatureId=1, FeaturesSet=2, Amount=0},
-                //new NomenclatureInStore {Id=7, StoreId=2, NomenclatureId=1, FeaturesSet=3, Amount=11},
-                //new NomenclatureInStore {Id=8, StoreId=2, NomenclatureId=1, FeaturesSet=4, Amount=8},
+                new NomenclatureInStore {Id=6, StoreId=2, NomenclatureId=1, FeaturesSet=2, Amount=5},
+                new NomenclatureInStore {Id=7, StoreId=3, NomenclatureId=1, FeaturesSet=3, Amount=11},
+                new NomenclatureInStore {Id=8, StoreId=3, NomenclatureId=1, FeaturesSet=4, Amount=8},
 
                 new NomenclatureInStore {Id=9, StoreId=1, NomenclatureId=2, FeaturesSet=5, Amount=4},
                 new NomenclatureInStore {Id=10, StoreId=1, NomenclatureId=2, FeaturesSet=6, Amount=8},

@@ -1,0 +1,43 @@
+﻿@model mvc4gw9.Models.ShoppingBasketAddPageContent
+
+<div class="basket">
+@{
+    <img class="basket_added_product_image" src="/Content/nomenclature/pictures/@Model.ProductImage" alt="@Model.ProductImage"/><br/>
+    <span class="basket_product_title">@Model.ProductName</span><br/>
+    <span class="basket_product_featuresset">@Model.ProductFeaturesSet</span>
+    
+    <h4>В наличии</h4>
+    <table class="basket_added_product_in_stores">
+
+        <tr>
+            <th class="store">Склад</th>
+            <th class="amount">Кол-во</th>
+        </tr>
+        
+        @foreach (var store in Model.ProductInStores)
+        {
+            <tr>
+                <td class="store">
+                    @store.StoreName
+                    <br/>
+                    @store.StoreAddress
+                </td>
+                <td class="amount">
+                    <br/>
+                    @store.ProductAmount
+                </td>
+            </tr>    
+        }            
+    </table>
+
+    <h4>В заказ</h4>   
+    <form class="basket_added_product_amount_form"action="/ShoppingBasket/Add" method="post">
+        <input type="hidden" name="NomenclatureId" value="@ViewBag.Id"/>
+        <input type="hidden" name="FeaturesSet" value="@ViewBag.FeaturesSet"/>
+        <input type="text" name="Amount"/>
+        <br/>
+        <input type="submit" value="Добавить"/>
+    </form>
+    
+}
+</div>
